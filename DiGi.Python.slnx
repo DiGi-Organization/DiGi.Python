@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="DefaultDocumentation.json" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Build.targets" />
+  </Folder>
+  <Project Path="DiGi.Python/DiGi.Python.csproj" />
+  <Project Path="../DiGi.Test/DiGi.Python.xUnit/DiGi.Python.xUnit.csproj" />
+</Solution>
