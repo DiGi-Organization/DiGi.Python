@@ -3,8 +3,9 @@
 **DiGi.Python** is domain-free CPython interop for DiGi: running a Python interpreter out of
 process with stall and cancellation handling, resolving the interpreter, deploying embedded
 scripts next to it, reading a marker-delimited JSON preflight and hashing files and model
-directories. It is extracted from `DiGi.YOLO`, which kept these helpers privately, so that
-`DiGi.Laya` and any later Python-backed library share one implementation.
+directories. It takes over the helpers `DiGi.YOLO` keeps privately today, so that `DiGi.Laya`,
+`DiGi.YOLO` ([DiGi.YOLO#23](https://github.com/DiGi-Organization/DiGi.YOLO/issues/23)) and any later
+Python-backed library share one implementation.
 
 > **Status:** repository scaffolding only. The library itself is being built in
 > [DiGi.Python#1](https://github.com/DiGi-Organization/DiGi.Python/issues/1), part of the
