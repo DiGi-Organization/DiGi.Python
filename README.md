@@ -7,10 +7,19 @@ directories. It takes over the helpers `DiGi.YOLO` keeps privately today, so tha
 `DiGi.YOLO` ([DiGi.YOLO#23](https://github.com/DiGi-Organization/DiGi.YOLO/issues/23)) and any later
 Python-backed library share one implementation.
 
-> **Status:** repository scaffolding only. The library itself is being built in
-> [DiGi.Python#1](https://github.com/DiGi-Organization/DiGi.Python/issues/1), part of the
-> [DiGi.Laya and DiGi.Python libraries](https://github.com/DiGi-Organization/DiGi.Maintenance/issues/13)
-> tracking issue.
+Built in [DiGi.Python#1](https://github.com/DiGi-Organization/DiGi.Python/issues/1), part of the
+[DiGi.Laya and DiGi.Python libraries](https://github.com/DiGi-Organization/DiGi.Maintenance/issues/13)
+tracking issue. `DiGi.YOLO` still uses its own copies until DiGi.YOLO#23 switches it over.
+
+| Member | What it does |
+|---|---|
+| `Query.ExecuteProcess` → `PythonProcessResult` | Runs a process without a window, reads both streams asynchronously as UTF-8, keeps the last `Constants.Count.OutputLines` (200) lines of each, and on cancellation or an inactivity limit ends the whole process tree (exit code -1, `Cancelled` / `Stalled`). |
+| `Query.PythonPath` / `Query.PythonPaths` | Resolve the interpreter: a path naming an existing file as given, otherwise `python` / `python3` on `PATH`, in `PATH` order. |
+| `Query.NormalizedPath` | Full path without a trailing separator, which would escape a closing quote on a command line. |
+| `Modify.WriteScripts` | Writes scripts from a folder beside an assembly or from its embedded resources, always overwriting except for the "keep existing" names. |
+| `Query.MarkedJson` | The JSON payload between the last pair of marker lines in captured stdout. |
+| `Query.FileSHA256` / `Query.DirectorySHA256` | Lowercase hex SHA-256 of a file, and an order- and separator-independent digest of a folder's content (to identify a model folder). |
+| `PythonEnvironmentResult`, `PythonPackageVersion` | Serializable preflight result (interpreter, version, CUDA, package versions, messages); not sealed, so a library derives its own. |
 
 It is not `DiGi.Scripting.Python`: that one is IronPython - in-process scripting that cannot load
 CPython packages such as torch or transformers.
